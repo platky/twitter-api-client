@@ -116,7 +116,7 @@ class Scraper:
         headers = get_headers(self.session)
         headers['content-type'] = "application/json"
         res = asyncio.run(self.process(urls, headers))
-        self.save_data(res, name)
+        # self.save_data(res, name)
         return res
 
     async def process(self, urls: list, headers: dict) -> tuple:
@@ -186,7 +186,7 @@ class Scraper:
                 session.cookie_jar.update_cookies(r.cookies)
 
                 tagged_data = _data | {ID: data[ID]}
-                self.save_data([tagged_data], name)
+                # self.save_data([tagged_data], name)
                 all_data.append(tagged_data)
                 cursor = get_cursor(_data)
                 logger.debug(f'{cursor = }')
