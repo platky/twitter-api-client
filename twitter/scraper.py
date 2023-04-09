@@ -43,8 +43,13 @@ logger = logging.getLogger(__name__)
 class Scraper:
     GRAPHQL_URL = 'https://api.twitter.com/graphql'
 
-    def __init__(self, username: str, password: str):
-        self.session = login(username, password)
+    def __init__(self, session):
+        self.session = session
+
+    @classmethod
+    def login(cls, username: str, password: str):
+        session = login(username, password)
+        return cls(session)
 
     def tweets(self, ids: list[int], limit=math.inf):
         return self.run(ids, Operation.Data.UserTweets, limit)
