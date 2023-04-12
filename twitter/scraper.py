@@ -19,14 +19,6 @@ from .constants import *
 from .login import login
 from .utils import find_key, build_query, get_headers, set_qs
 
-try:
-    if get_ipython().__class__.__name__ == 'ZMQInteractiveShell':
-        import nest_asyncio
-
-        nest_asyncio.apply()
-except:
-    ...
-
 if platform.system() != 'Windows':
     import uvloop
 

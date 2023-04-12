@@ -23,14 +23,6 @@ colors = [f'\u001b[{i}m' for i in range(30, 38)]
 logging.config.dictConfig(log_config)
 logger = logging.getLogger(__name__)
 
-try:
-    if get_ipython().__class__.__name__ == 'ZMQInteractiveShell':
-        import nest_asyncio
-
-        nest_asyncio.apply()
-except:
-    ...
-
 if platform.system() != 'Windows':
     try:
         import uvloop
